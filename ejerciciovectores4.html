@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title>Ejercicio 4 - Análisis de Ventas</title>
+</head>
+<body>
+  <h2>Ejercicio 4: Análisis de Ventas de un Local Comercial</h2>
+
+  <script>
+    // Declaramos variables
+    const dias = 15;
+    let ventas = [];
+    let ventaMayor = 0;
+    let ventaMenor = 0;
+    let diaMayor = 0;
+    let diaMenor = 0;
+
+    // Ingreso de ventas diarias
+    for (let i = 0; i < dias; i++) {
+      let valor = parseFloat(prompt(`Ingrese la venta del día ${i + 1} (en dólares):`));
+
+      // Validar que sea número positivo
+      while (isNaN(valor) || valor < 0) {
+        valor = parseFloat(prompt(`Valor no válido. Ingrese la venta del día ${i + 1} (número positivo):`));
+      }
+
+      ventas.push(valor);
+
+      // Inicializar mayor y menor en el primer valor ingresado
+      if (i === 0) {
+        ventaMayor = valor;
+        ventaMenor = valor;
+        diaMayor = 1;
+        diaMenor = 1;
+      } else {
+        // Comprobar si es mayor o menor
+        if (valor > ventaMayor) {
+          ventaMayor = valor;
+          diaMayor = i + 1;
+        }
+        if (valor < ventaMenor) {
+          ventaMenor = valor;
+          diaMenor = i + 1;
+        }
+      }
+    }
+
+    // Mostrar resultados
+    document.write("<h3>Ventas registradas (15 días):</h3>");
+    for (let i = 0; i < dias; i++) {
+      document.write(`Día ${i + 1}: $${ventas[i].toFixed(2)}<br>`);
+    }
+
+    document.write("<h3>Resultados del análisis:</h3>");
+    document.write(`<b>Venta mayor:</b> $${ventaMayor.toFixed(2)} (ocurrió el día ${diaMayor})<br>`);
+    document.write(`<b>Venta menor:</b> $${ventaMenor.toFixed(2)} (ocurrió el día ${diaMenor})<br>`);
+  </script>
+</body>
+</html>
