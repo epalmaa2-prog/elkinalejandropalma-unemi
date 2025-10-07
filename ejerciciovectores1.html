@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title>Ejercicio 1 - Control de Inventario</title>
+</head>
+<body>
+  <h2>Ejercicio 1: Control de Inventario</h2>
+  <script>
+    // Declaramos un vector con 6 posiciones
+    let productos = ["Arroz", "Azúcar", "Leche", "Pan", "Aceite", "Huevos"];
+    let precios = [];
+    let total = 0;
+
+    // Pedimos el precio de cada producto
+    for (let i = 0; i < productos.length; i++) {
+      let precio = parseFloat(prompt(`Ingrese el precio de ${productos[i]}:`));
+      precios.push(precio);
+    }
+
+    // Mostramos los precios ingresados
+    document.write("<h3>Precios ingresados:</h3>");
+    for (let i = 0; i < productos.length; i++) {
+      document.write(`${productos[i]}: $${precios[i].toFixed(2)}<br>`);
+      total += precios[i]; // Acumulamos el total
+    }
+
+    // Mostramos el total del inventario
+    document.write(`<h3>Valor total del inventario: $${total.toFixed(2)}</h3>`);
+  </script>
+</body>
+</html>

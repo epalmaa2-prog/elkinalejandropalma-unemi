@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title>Ejercicio 2 - Promedio de Calificaciones</title>
+</head>
+<body>
+  <h2>Ejercicio 2: Promedio de Calificaciones en la Universidad</h2>
+  <script>
+    // Declaración de variables
+    const cantidadEstudiantes = 12;
+    let notas = [];       // Vector para almacenar las notas
+    let suma = 0;
+    let aprobados = 0;
+    let reprobados = 0;
+
+    // Ciclo repetitivo para ingresar las notas
+    for (let i = 0; i < cantidadEstudiantes; i++) {
+      let nota = parseFloat(prompt(`Ingrese la nota del estudiante ${i + 1}:`));
+
+      // Validación simple para asegurar que la nota sea un número válido
+      while (isNaN(nota) || nota < 0 || nota > 10) {
+        nota = parseFloat(prompt(`Valor no válido. Ingrese la nota del estudiante ${i + 1} (0 a 10):`));
+      }
+
+      notas.push(nota); // Guardamos la nota en el vector
+      suma += nota;     // Acumulamos para calcular el promedio
+
+      // Verificamos si aprueba o reprueba
+      if (nota >= 7) {
+        aprobados++;
+      } else {
+        reprobados++;
+      }
+    }
+
+    // Cálculo del promedio
+    let promedio = suma / cantidadEstudiantes;
+
+    // Mostramos los resultados
+    document.write("<h3>Resultados del curso:</h3>");
+    document.write("<b>Notas ingresadas:</b> " + notas.join(", ") + "<br>");
+    document.write(`<b>Promedio general:</b> ${promedio.toFixed(2)}<br>`);
+    document.write(`<b>Estudiantes aprobados:</b> ${aprobados}<br>`);
+    document.write(`<b>Estudiantes reprobados:</b> ${reprobados}<br>`);
+  </script>
+</body>
+</html>

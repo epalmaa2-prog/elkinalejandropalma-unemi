@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title>Ejercicio 3 - Registro de Temperaturas Semanales</title>
+</head>
+<body>
+  <h2>Ejercicio 3: Registro de Temperaturas Semanales</h2>
+
+  <script>
+    // Declaración de variables
+    const dias = ["Lunes", "Martes", "Miércoles", "Jueves", "Viernes", "Sábado", "Domingo"];
+    let temperaturas = [];
+    let suma = 0;
+
+    // Ingreso de temperaturas
+    for (let i = 0; i < dias.length; i++) {
+      let temp = parseFloat(prompt(`Ingrese la temperatura máxima del día ${dias[i]} (en °C):`));
+
+      // Validación simple para evitar valores no numéricos
+      while (isNaN(temp)) {
+        temp = parseFloat(prompt(`Valor no válido. Ingrese la temperatura del día ${dias[i]} (en °C):`));
+      }
+
+      temperaturas.push(temp); // Guardamos en el vector
+      suma += temp;            // Acumulamos para el promedio
+    }
+
+    // Cálculo del promedio semanal
+    let promedio = suma / dias.length;
+
+    // Mostrar resultados
+    document.write("<h3>Temperaturas registradas:</h3>");
+    for (let i = 0; i < dias.length; i++) {
+      document.write(`${dias[i]}: ${temperaturas[i]} °C<br>`);
+    }
+
+    document.write(`<h3>Temperatura promedio de la semana: ${promedio.toFixed(2)} °C</h3>`);
+
+    // Días que superaron el promedio
+    document.write("<h3>Días que superaron el promedio:</h3>");
+    let contador = 0;
+    for (let i = 0; i < dias.length; i++) {
+      if (temperaturas[i] > promedio) {
+        document.write(`• ${dias[i]} (${temperaturas[i]} °C)<br>`);
+        contador++;
+      }
+    }
+
+    if (contador === 0) {
+      document.write("Ningún día superó la temperatura promedio de la semana.");
+    }
+  </script>
+</body>
+</html>

@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title>Ejercicio 5 - Consulta de Saldos Bancarios</title>
+</head>
+<body>
+  <h2>Ejercicio 5: Consulta de Saldos Bancarios</h2>
+
+  <script>
+    // Declaramos un vector para almacenar los saldos de 10 clientes
+    let saldos = [];
+
+    // Ingreso de los saldos de los 10 clientes
+    for (let i = 0; i < 10; i++) {
+      let saldo = parseFloat(prompt(`Ingrese el saldo del cliente ${i + 1}:`));
+
+      // Validar que sea un número válido
+      while (isNaN(saldo) || saldo < 0) {
+        saldo = parseFloat(prompt(`Valor no válido. Ingrese el saldo del cliente ${i + 1}:`));
+      }
+
+      saldos.push(saldo); // Guardamos el saldo en el vector
+    }
+
+    // Mostramos todos los saldos registrados (opcional)
+    document.write("<h3>Saldos registrados:</h3>");
+    for (let i = 0; i < saldos.length; i++) {
+      document.write(`Cuenta ${i + 1}: $${saldos[i].toFixed(2)}<br>`);
+    }
+
+    // Consulta de saldo por número de cuenta
+    let cuenta = parseInt(prompt("Ingrese el número de cuenta que desea consultar (1 a 10):"));
+
+    // Validamos si la cuenta existe
+    if (cuenta >= 1 && cuenta <= 10) {
+      document.write("<h3>Consulta de saldo:</h3>");
+      document.write(`El saldo de la cuenta ${cuenta} es: $${saldos[cuenta - 1].toFixed(2)}`);
+    } else {
+      document.write("<h3 style='color:red;'>Error: la cuenta ingresada no está registrada.</h3>");
+    }
+  </script>
+</body>
+</html>
